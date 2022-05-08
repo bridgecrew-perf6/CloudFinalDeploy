@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+
+        <!-- Logo - Links to home Page -->
+        <%= link_to "Invasion English", root_path, class:"navbar-brand" %>
+
+        <!-- Toggle Icon -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Home Link -->
+                <li class="nav-item">
+                    <%= link_to "Home", root_path, class:"nav-link" %>
+                </li>
+
+                <!-- Link to Questions page -->
+                <li class="nav-item">
+                    <%= link_to "Questions", questions_path, class: "nav-link" %>
+                </li>
+
+                <!-- Link to Writings page -->
+                <li class="nav-item">
+                    <%= link_to "Writings", writings_path, class: "nav-link" %>
+                </li>
+
+                <!-- Link to Forum -->
+                <li class="nav-item">
+                    <%= link_to "Forum", rooms_path, class: "nav-link" %>
+                </li>
+
+                <!-- About Link -->
+                <li class="nav-item">
+                    <%= link_to "About", about_path, class:"nav-link" %>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <!-- Searchbar -->
+                <%= render 'search/form' %>
+                <!-- Notifications -->
+                <%= render 'layouts/notifications' %>
+                <!-- User Dropdown -->
+                <%= render 'user/session_manager' %>
+            </ul>
+        </div>
+    </div>
+</nav>

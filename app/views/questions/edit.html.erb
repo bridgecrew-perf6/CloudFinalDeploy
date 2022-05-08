@@ -1,0 +1,15 @@
+<div class="container">
+    <!-- Heading -->
+    <h1>Editing question</h1>
+
+    <!-- Edit Question Form -->
+    <%= render "form", question: @question %>
+    <br>
+
+    <div>
+        <!-- Show Question Link -->
+        <%= link_to "Show this question", @question %> |
+        <!-- Back to all Questions Link -->
+        <%= link_to "Back to questions", questions_path %>
+    </div>
+</div>

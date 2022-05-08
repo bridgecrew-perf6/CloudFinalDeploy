@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+    <!-- Render Question -->
+    <%= render @question %>
+
+    <div>
+        <!-- Link to Edit Question -->
+        <%= link_to "Edit this question", edit_question_path(@question) %> |
+        
+        <!-- Link back to all Questions -->
+        <%= link_to "Back to questions", questions_path %>
+
+        <!-- Button to Destroy Question -->
+        <%= button_to "Destroy this question", @question, method: :delete %>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Comment Form -->
+    <%= render 'comments/form', question: @question, comment: @question.comments.build, submit_label: "Reply" %>
+
+    <!-- Render Previous Comments -->
+    <% @comments.each do |comment| %>
+        <%= render 'comments/comment', question: @question, comment: comment %>
+    <% end %>
+</div>

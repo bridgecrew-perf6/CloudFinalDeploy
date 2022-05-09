@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_09_212058) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -50,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "question_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_comments_on_question_id"
@@ -70,8 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "room_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,9 +84,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
-    t.integer "recipient_id", null: false
+    t.bigint "recipient_id", null: false
     t.string "type", null: false
-    t.json "params"
+    t.jsonb "params"
     t.datetime "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -92,8 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
   end
 
   create_table "participants", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "room_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_participants_on_room_id"
@@ -106,7 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "slug"
     t.integer "comments_count"
     t.index ["slug"], name: "index_questions_on_slug", unique: true
@@ -139,7 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_173444) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_writings_on_user_id"
   end
 

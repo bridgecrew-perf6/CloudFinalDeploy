@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     def show
         # Set all users except current user
-        @users = User.all_except(current_user)
+        @users = User.includes(avatar_attachment: [:blob]).all_except(current_user)
 
         # Set all public rooms
         @room = Room.new

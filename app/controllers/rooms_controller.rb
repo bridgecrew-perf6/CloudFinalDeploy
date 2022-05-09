@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
         @rooms = Room.public_rooms
 
         # Set all Users except current user
-        @users = User.includes(:avatar_attachment).all_except(current_user)
+        @users = User.includes(avatar_attachment: [:blob]).all_except(current_user)
 
         # Render index page without selected chatroom
         render 'index'

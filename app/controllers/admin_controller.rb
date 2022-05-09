@@ -27,6 +27,6 @@ class AdminController < ApplicationController
 
     def show_question
         # Set question using Id in params
-        @question = Question.includes(:user).find(params[:id])
+        @question = Question.includes(comments: [:user, :rich_text_body]).find(params[:id])
     end
 end

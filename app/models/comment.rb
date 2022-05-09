@@ -16,6 +16,9 @@ class Comment < ApplicationRecord
 
     # Send a notification
     def notify_recipient
+        # Check if current user wrote question
+        return if question.user == user
+        # Create notification
         CommentNotification.with(comment: self, question: question).deliver_later(question.user)
     end
 

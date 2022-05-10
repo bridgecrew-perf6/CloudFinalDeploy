@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
     # Make sure user is logged in
     before_action :authenticate_user!
-
+    before_action :set_status
 
 
     def index
@@ -28,10 +28,10 @@ class RoomsController < ApplicationController
 
         @message = Message.new
         # Set all the messages for selected room
-        @messages = @single_room.messages.order(created_at: :asc)
+        @messages = @single_room.messages.includes([:user]).order(created_at: :asc)
 
         # Set all Users except current user
-        @users = User.all_except(current_user)
+        @users = User.includes(avatar_attachment: [:blob]).all_except(current_user)
         # Render index page with selected chatroom
         render 'index'
     end
@@ -40,5 +40,15 @@ class RoomsController < ApplicationController
     def create
         # create a new room using params
         @room = Room.create(name: params["room"]["name"])
+    end
+
+
+
+
+    private
+
+    # Set user as online when they visit rooms pages
+    def set_status
+        current_user.update!(status: User.statuses[:online]) if current_user
     end
 end

@@ -5,6 +5,22 @@ class Message < ApplicationRecord
     after_create_commit { broadcast_append_to room }
     before_create :confirm_participant
 
+    has_many_attached :attachments, dependent: :destroy
+
+
+    # Helper to add attachements
+    def chat_attachment(index)
+        target = attachments[index]
+        return unless attachments.attached?
+
+        # Resize any images or videos
+        if target.image?
+            target.variant(resize_to_limit: [150, 150]).processed
+        elsif target.video?
+            target.variant(resize_to_limit: [150, 150]).processed
+        end
+    end
+
 
 
     # Check if someone is a participant if room is private

@@ -3,8 +3,26 @@
     <%= form_with(model: [@single_room, @message], remote: true, class: "d-flex",
         data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }) do |f| %>
 
+        <!-- Attachments Preview -->
+        <div id="attachment-previews", data-controller="message-preview" data-action="message-preview#preview">
+        </div>
+
+        <div class="image-upload">
+            <!-- Button for attachments -->
+            <label for="message_attachments">
+                <i class="bi bi-plus-circle upload-button"></i>
+            </label>
+
+            <!-- Attachments Input -->
+            <%= f.file_field(:attachments, multiple: true, 
+                data: { controller: "message-preview", action: "change->message-preview#preview" }) %> 
+        </div>
+
         <!-- Message Input -->
         <%= f.text_field :body, id: "chat-text", class: "form-control msg-content", autocomplete: "off" %>
-        <%= f.submit data: { disable_with: false }, class: "btn btn-primary" %>
+
+        <!-- Submit Button -->
+        <%= f.submit "Send", class: "btn btn-primary",
+            data: { disable_with: false, controller: "message-preview", action: "click->message-preview#clearPreviews"} %>
     <% end %>
 </div>

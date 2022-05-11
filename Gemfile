@@ -85,3 +85,5 @@ gem "ransack", "~> 3.1"
 gem "friendly_id", "~> 5.4"
 
 gem "bullet", "~> 7.0"
+
+gem 'aws-sdk-s3'

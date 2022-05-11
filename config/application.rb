@@ -22,7 +22,7 @@ module CloudFinalProject
     # in config/environments, which are processed later.
     config.active_storage.variant_processor = :mini_magick
 
-    config.assets.initialize_on_precompile = false
+    
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")

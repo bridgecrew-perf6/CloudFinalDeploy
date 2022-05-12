@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+    
     # Admin Routes
     authenticated :user, ->(user) { user.admin? } do
         get 'admin', to: 'admin#index'
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
     }
 
+    # Routes for Readings
+    resources :readings
 
     # Routes for Writings
     resources :writings

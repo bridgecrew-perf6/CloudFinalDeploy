@@ -1,0 +1,15 @@
+<div class="container">
+    <!-- Render Reading -->
+    <%= render @reading %>
+
+    <div>
+        <!-- Link to Edit Reading -->
+        <%= link_to "Edit this reading", edit_reading_path(@reading) %> |
+
+        <!-- Link back to all Readings -->
+        <%= link_to "Back to readings", readings_path %>
+
+        <!-- Button to Destroy Reading -->
+        <%= button_to "Destroy this reading", @reading, method: :delete %>
+    </div>
+</div>

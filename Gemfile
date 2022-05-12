@@ -87,3 +87,5 @@ gem "friendly_id", "~> 5.4"
 gem "bullet", "~> 7.0"
 
 gem 'aws-sdk-s3'
+
+gem "redis"

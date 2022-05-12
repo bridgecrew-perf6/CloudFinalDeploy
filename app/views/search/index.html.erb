@@ -10,8 +10,10 @@
                 <th><%= sort_link(@query, :title, "Title", default_order: :asc) %></th>
                 <!-- Body Heading -->
                 <th><%= sort_link(@query, :body, "Question") %></th>
-                <!-- User Heading -->
-                <th><%= sort_link(@query, :user_name, "Users") %></th>
+                <!-- Keyword Heading -->
+                <th><%= sort_link(@query, :keyword, "Keywords") %></th>
+                <!-- Level Heading -->
+                <th><%= sort_link(@query, :level, "Level") %></th>
             </tr>
         </thead>
 
@@ -21,7 +23,8 @@
                 <tr>
                     <td><%= link_to question.title, question %></td>
                     <td><%= question.body.truncate_words(25) %></td>
-                    <td><%= link_to question.user.name, question.user %></td>
+                    <td><%= question.keyword %></td>
+                    <td><%= question.level %></td>
                 </tr>
             <% end %>
         </tbody>

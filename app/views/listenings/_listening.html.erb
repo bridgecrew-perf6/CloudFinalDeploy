@@ -1,0 +1,16 @@
+<div id="<%= dom_id listening %>">
+    <!-- Title -->
+    <h2><%= listening.title %></h2>
+
+    <!-- Level -->
+    <h4>Level: <%= listening.level %> </h4>
+    
+    <!-- Reading Body -->
+    <div>
+        <%= audio_tag(url_for(listening.song_file), controls: '') %>
+    </div>
+</div>
+
+  
+
+

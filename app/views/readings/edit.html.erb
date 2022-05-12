@@ -1,10 +1,16 @@
-<h1>Editing reading</h1>
+<div class="container">
+    <!-- Heading -->
+    <h1>Editing reading</h1>
 
-<%= render "form", reading: @reading %>
+    <!-- Edit reading Form -->
+    <%= render "form", reading: @reading %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this reading", @reading %> |
-  <%= link_to "Back to readings", readings_path %>
+    <div>
+        <!-- Show reading Link -->
+        <%= link_to "Show this reading", @reading %> |
+        <!-- Back to all Readings Link -->
+        <%= link_to "Back to readings", readings_path %>
+    </div>
 </div>

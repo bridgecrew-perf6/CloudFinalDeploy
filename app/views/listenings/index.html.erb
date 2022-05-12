@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+    <!-- Heading  -->
+    <h1>Listenings</h1>
+
+    <!-- Renders All Listenings -->
+    <div id="listenings">
+        <% @listenings.each do |listening| %>
+        <%= render listening %>
+            <p>
+                <%= link_to "Show this listening", listening %>
+            </p>
+        <% end %>
+    </div>
+
+    <!-- Add new listening Link -->
+    <%= link_to "New listening", new_listening_path %>
+</div>

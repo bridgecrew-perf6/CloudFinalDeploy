@@ -1,0 +1,16 @@
+<div class="container">
+    <!-- Heading -->
+    <h1>Editing Listening</h1>
+
+    <!-- Edit Listening Form -->
+    <%= render "form", listening: @listening %>
+
+    <br>
+
+    <div>
+        <!-- Show Listening Link -->
+        <%= link_to "Show this writing", @listening %> |
+        <!-- Back to all listenings Link -->
+        <%= link_to "Back to listenings", listenings_path %>
+    </div>
+</div>

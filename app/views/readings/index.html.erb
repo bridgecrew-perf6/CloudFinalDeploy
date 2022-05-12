@@ -4,7 +4,7 @@
     <!-- Heading  -->
     <h1>Readings</h1>
 
-    <!-- Renders All Writings -->
+    <!-- Renders All Readings -->
     <div id="readings">
         <% @readings.each do |reading| %>
         <%= render reading %>
@@ -14,6 +14,6 @@
         <% end %>
     </div>
 
-    <!-- Add new Writing Link -->
+    <!-- Add new Reading Link -->
     <%= link_to "New reading", new_reading_path %>
 </div>

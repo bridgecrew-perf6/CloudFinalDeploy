@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_09_224156) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_150735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_224156) do
     t.integer "comments_count"
     t.index ["slug"], name: "index_questions_on_slug", unique: true
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.string "title"
+    t.string "level"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|

@@ -86,7 +86,7 @@ class QuestionsController < ApplicationController
 
         # Only allow a list of trusted parameters through.
         def question_params
-            params.require(:question).permit(:title, :body, :answer)
+            params.require(:question).permit(:title, :body, :answer, :level, :keyword, :prompt)
         end
 
         # Set notifications to read

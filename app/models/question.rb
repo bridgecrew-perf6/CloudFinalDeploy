@@ -1,9 +1,13 @@
 class Question < ApplicationRecord
     extend FriendlyId
 
-    validates :title, presence: true, length:{ minimum:5, maximum:20 }
-    validates :body, presence: true, length:{ minimum:5, maximum:35 }
-    validates :answer, presence: true, length:{ minimum:5, maximum:35 }
+    validates :title, presence: true, length:{ minimum:5, maximum:40 }
+    validates :level, presence: true
+    validates :keyword, presence: true
+    validates :body, presence: true, length:{ minimum:5, maximum:100 }
+    validates :answer, presence: true, length:{ minimum:5, maximum:50 }
+    validates :prompt, presence: true, length:{ minimum:5, maximum:100 }
+
 
     belongs_to :user
 

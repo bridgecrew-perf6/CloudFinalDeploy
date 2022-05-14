@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_14_131726) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_14_152502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_14_131726) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "listening_options", force: :cascade do |t|
+    t.integer "index"
+    t.string "question"
+    t.string "a"
+    t.string "b"
+    t.string "c"
+    t.string "answer"
+    t.bigint "listening_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listening_id"], name: "index_listening_options_on_listening_id"
   end
 
   create_table "listenings", force: :cascade do |t|
@@ -188,6 +201,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_14_131726) do
   add_foreign_key "comments", "users"
   add_foreign_key "corrections", "users"
   add_foreign_key "corrections", "writings"
+  add_foreign_key "listening_options", "listenings"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "rooms"

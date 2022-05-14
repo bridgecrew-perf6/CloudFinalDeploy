@@ -3,7 +3,7 @@ class ReadingsController < ApplicationController
 
     # GET /readings or /readings.json
     def index
-        @readings = Reading.all
+        @readings = Reading.includes(:rich_text_body).all
     end
 
     # GET /readings/1 or /readings/1.json

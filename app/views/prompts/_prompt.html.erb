@@ -1,0 +1,23 @@
+<div id="<%= dom_id prompt %>">
+    <!-- Topic -->
+    <h2><%= prompt.topic %></h2>
+
+    <!-- Level -->
+    <div>
+        <strong>Level:</strong>
+        <%= prompt.level %>
+    </div>    
+
+    <!-- Type -->
+    <div>
+        <strong>Keyword:</strong>
+        <%= prompt.intro %>
+    </div>
+
+    <div>
+        <%= prompt.body %>
+    </div>
+
+    <!-- Link to new Writings page -->
+    <%= link_to "Get started", new_writing_path, class: "btn btn-primary" %>
+</div>

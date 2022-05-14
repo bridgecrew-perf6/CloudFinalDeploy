@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+    <!-- Heading  -->
+    <h1>Prompts</h1>
+
+    <!-- Renders All Prompts -->
+    <div id="prompts">
+        <% @prompts.each do |prompt| %>
+        <%= render prompt %>
+            <p>
+                <%= link_to "Show this prompt", prompt %>
+            </p>
+        <% end %>
+    </div>
+
+    <!-- Add new prompt Link -->
+    <%= link_to "New prompt", new_prompt_path %>
+</div>

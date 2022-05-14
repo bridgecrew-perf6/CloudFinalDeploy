@@ -1,0 +1,15 @@
+<div class="container">
+    <!-- Render prompt -->
+    <%= render @prompt %>
+
+    <div>
+        <!-- Link to Edit prompt -->
+        <%= link_to "Edit this prompt", edit_prompt_path(@prompt) %> |
+
+        <!-- Link back to all prompts -->
+        <%= link_to "Back to prompts", prompts_path %>
+
+        <!-- Button to Destroy prompt -->
+        <%= button_to "Destroy this prompt", @prompt, method: :delete %>
+    </div>
+</div>

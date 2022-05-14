@@ -8,6 +8,7 @@ class ListeningsController < ApplicationController
 
   # GET /listenings/1 or /listenings/1.json
   def show
+    @listening_options = @listening.listening_options.order(index: :asc)
   end
 
   # GET /listenings/new

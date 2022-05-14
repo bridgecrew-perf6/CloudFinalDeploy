@@ -1,0 +1,42 @@
+<%= form_with(model: [listening, listening.listening_options.build]) do |f| %>
+
+    <!-- Index Input -->
+    <div>
+        <%= f.label :index, style: "display: block" %>
+        <%= f.number_field :index %>
+    </div>
+
+    <!-- Question Input -->
+    <div>
+        <%= f.label :question, style: "display: block" %>
+        <%= f.text_field :question %>
+    </div>
+
+    <!-- Option A -->
+    <div>
+        <%= f.label :a, style: "display: block" %>
+        <%= f.text_field :a %>
+    </div>
+
+    <!-- Option B -->
+    <div>
+        <%= f.label :b, style: "display: block" %>
+        <%= f.text_field :b %>
+    </div>
+
+    <!-- Option C -->
+    <div>
+        <%= f.label :c, style: "display: block" %>
+        <%= f.text_field :c %>
+    </div>
+
+    <!-- Answer Input -->
+    <div>
+        <%= f.label :answer, style: "display: block" %>
+        <%= f.text_field :answer %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>

@@ -36,7 +36,9 @@ Rails.application.routes.draw do
         resources :comments
     end
 
-    resources :listenings
+    resources :listenings do
+        resources :listening_options
+    end
 
 
     # Routes for chatrooms

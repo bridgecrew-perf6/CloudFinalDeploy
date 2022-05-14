@@ -19,7 +19,7 @@
 
 <div class="container">
     <!-- Corrections Form -->
-    <%= render 'corrections/form', writing: @writing %>
+    <%= render 'corrections/form', writing: @writing, correction: @writing.corrections.build, submit_label: "Reply" %>
 
     <!-- Render Corrections -->
     <% @corrections.each do |correction| %>

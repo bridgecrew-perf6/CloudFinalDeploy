@@ -13,3 +13,13 @@
         <%= button_to "Destroy this reading", @reading, method: :delete %>
     </div>
 </div>
+
+<div class= "container">
+    <h4>Which Paragraph?</h4>
+
+    <% @reading_problems.each do |reading_problem| %>
+        <%= render 'reading_problems/reading_problem', reading: @reading, reading_problem: reading_problem %>
+    <% end %>
+
+    <%= render 'reading_problems/form', reading: @reading %>
+</div>

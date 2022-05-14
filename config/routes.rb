@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     }
 
     # Routes for Readings
-    resources :readings
+    resources :readings do
+        resources :reading_problems
+    end
 
     # Routes for Writings
     resources :writings do

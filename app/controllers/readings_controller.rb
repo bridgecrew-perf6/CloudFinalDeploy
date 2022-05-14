@@ -8,6 +8,7 @@ class ReadingsController < ApplicationController
 
     # GET /readings/1 or /readings/1.json
     def show
+        @reading_problems = @reading.reading_problems.order(index: :asc)
     end
 
     # GET /readings/new

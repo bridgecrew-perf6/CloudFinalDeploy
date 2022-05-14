@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_14_120138) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_14_131726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -135,6 +135,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_14_120138) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "reading_problems", force: :cascade do |t|
+    t.integer "index"
+    t.string "question"
+    t.string "answer"
+    t.bigint "reading_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reading_id"], name: "index_reading_problems_on_reading_id"
+  end
+
   create_table "readings", force: :cascade do |t|
     t.string "title"
     t.string "level"
@@ -183,5 +193,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_14_120138) do
   add_foreign_key "participants", "rooms"
   add_foreign_key "participants", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "reading_problems", "readings"
   add_foreign_key "writings", "users"
 end

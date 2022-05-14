@@ -1,18 +1,42 @@
-<div class="correction-<%= correction.id %> container" style="border: 1px solid black; padding: 1em; margin: 1em;" >
+<div class="correction-<%= correction.id %> " style="border: 1px solid black; padding: 1em; margin: 1em;" >
     <!-- User Name -->
     <%= correction.user.name %><br />
 
-    <!-- Time when correction Posted -->
-    <span>Posted <%= time_ago_in_words(correction.created_at) %> ago</span>
+    <!-- Check if Correction has been editied -->
+    <% if (correction.updated_at - correction.created_at) > 1 %>
+        <!-- Time when correction last edited -->
+        <span>Edited <%= time_ago_in_words(correction.updated_at) %> ago</span>
+    <% else %>
+        <!-- Time when correction Posted -->
+        <span>Posted <%= time_ago_in_words(correction.created_at) %> ago</span>
+    <% end %>
+
+
 
     <!-- Edit and Delete Buttons - Only shown to author of correction -->
     <% if current_user == correction.user %>
         <div class="btn-group float-end">
+            <%= link_to "Edit", nil, remote: true, class: "btn btn-warning", id: "edit-button-#{correction.id}", 
+                data: { 
+                    controller: "corrections", 
+                    action: "corrections#toggleForm",
+                    corrections_form_param: "edit-form-#{correction.id}",
+                    corrections_body_param: "correction-body-#{correction.id}",
+                    corrections_edit_param: "edit-button-#{correction.id}"
+                } %>
+
             <%= button_to "Delete", [writing, correction], class:"btn btn-danger", method: :delete %>
+        </div>
+
+        <!-- Edit Form - Comment is passed down so it can be used as placeholder  -->
+        <div id="edit-form-<%= correction.id %>" class="d-none">
+            <%= render 'corrections/form', writing: @writing, correction: correction, submit_label: "Update" %>
         </div>
     <% end %>
 
     <hr />
     <!-- Render body of Correction -->
-    <%= correction.body %>
+    <div id="correction-body-<%= correction.id %>">
+        <%= correction.body %>
+    </div>
 </div>

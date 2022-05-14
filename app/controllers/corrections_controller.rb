@@ -35,6 +35,22 @@ class CorrectionsController < ApplicationController
 
 
 
+    # Edit a correction
+    def update
+        # Find the correction using the id in params
+        @correction = @writing.corrections.find(params[:id])
+
+        # Update correction using params and redirect back to writing page
+        respond_to do |format|
+            if @correction.update(correction_params)
+                format.html { redirect_to writing_url(@writing), notice: "Correction has been updated" }
+            else 
+                format.html { redirect_to writing_url(@writing), alert: "Correction was not updated" }
+            end
+        end
+    end
+
+
 
 
     private 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_194548) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_14_120138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_194548) do
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_comments_on_question_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "corrections", force: :cascade do |t|
+    t.bigint "writing_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_corrections_on_user_id"
+    t.index ["writing_id"], name: "index_corrections_on_writing_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -167,6 +176,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_194548) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "questions"
   add_foreign_key "comments", "users"
+  add_foreign_key "corrections", "users"
+  add_foreign_key "corrections", "writings"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "rooms"

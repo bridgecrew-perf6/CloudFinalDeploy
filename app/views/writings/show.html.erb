@@ -15,3 +15,14 @@
         <%= button_to "Destroy this writing", @writing, method: :delete %>
     </div>
 </div>
+
+
+<div class="container">
+    <!-- Corrections Form -->
+    <%= render 'corrections/form', writing: @writing %>
+
+    <!-- Render Corrections -->
+    <% @corrections.each do |correction| %>
+        <%= render 'corrections/correction', writing: @writing, correction: correction %>
+    <% end %>
+</div>

@@ -16,7 +16,7 @@
 
 
 body {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .msg-form {

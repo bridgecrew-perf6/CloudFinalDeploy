@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :listenings
     
     
     # Admin Routes
@@ -26,12 +25,16 @@ Rails.application.routes.draw do
     resources :readings
 
     # Routes for Writings
-    resources :writings
+    resources :writings do
+        resources :corrections
+    end
 
     # Routes for Questions
     resources :questions do
         resources :comments
     end
+
+    resources :listenings
 
 
     # Routes for chatrooms

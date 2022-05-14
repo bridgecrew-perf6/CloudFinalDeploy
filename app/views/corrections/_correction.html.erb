@@ -1,0 +1,18 @@
+<div class="correction-<%= correction.id %> container" style="border: 1px solid black; padding: 1em; margin: 1em;" >
+    <!-- User Name -->
+    <%= correction.user.name %><br />
+
+    <!-- Time when correction Posted -->
+    <span>Posted <%= time_ago_in_words(correction.created_at) %> ago</span>
+
+    <!-- Edit and Delete Buttons - Only shown to author of correction -->
+    <% if current_user == correction.user %>
+        <div class="btn-group float-end">
+            <%= button_to "Delete", [writing, correction], class:"btn btn-danger", method: :delete %>
+        </div>
+    <% end %>
+
+    <hr />
+    <!-- Render body of Correction -->
+    <%= correction.body %>
+</div>

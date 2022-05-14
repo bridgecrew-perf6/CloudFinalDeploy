@@ -16,6 +16,7 @@ class User < ApplicationRecord
     has_many :writings, dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :messages
+    has_many :corrections, dependent: :destroy
 
     has_many :notifications, as: :recipient, dependent: :destroy
 

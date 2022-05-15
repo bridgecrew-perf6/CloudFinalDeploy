@@ -14,6 +14,10 @@ class AdminController < ApplicationController
         @questions = Question.all.includes(:user)
     end
 
+    def readings
+        @readings = Reading.all
+    end
+
     def comments
     end
 
@@ -28,5 +32,9 @@ class AdminController < ApplicationController
     def show_question
         # Set question using Id in params
         @question = Question.includes(comments: [:user, :rich_text_body]).find(params[:id])
+    end
+
+    def show_reading
+        @reading = Reading.includes(:reading_problems).find(params[:id])
     end
 end

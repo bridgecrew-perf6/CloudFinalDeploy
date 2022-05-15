@@ -1,0 +1,45 @@
+<div class="container">
+    <!-- Admin Links -->
+    <h1 class="text-center">Administrator</h1>
+    <%= render 'admin/nav_links' %>
+
+    <!-- Buttons for editing and deleting reading -->
+    <div class="text-center mt-5">
+        <div class="btn-group">
+            <%= link_to "Edit", edit_reading_path(@reading), class: "btn btn-warning" %>
+            <%= button_to "Delete", @reading, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </div>
+    <div>
+
+    <!-- Title -->
+    <h2><%= @reading.title %></h2>
+
+    <!-- Level -->
+    <h4>Level: <%= @reading.level %> </h4>
+    
+    <!-- Reading Body -->
+    <div>
+        <%= @reading.body %>
+    </div>
+
+    
+    <div class="row mt-1">
+        <!-- Number of Problems -->
+        <strong><%= pluralize(@reading.reading_problems.count, "Problem") %></strong>
+
+        <!-- Render each comment -->
+        <% @reading.reading_problems.each do |reading_problem| %>
+            <div class="row mt-1 text-center">
+                Q<%= reading_problem.index %>
+            </div>
+            <div>
+                <%= reading_problem.question %>
+            </div>
+            <div>
+                 <%= reading_problem.answer %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<%= render 'reading_problems/form', reading: @reading %>

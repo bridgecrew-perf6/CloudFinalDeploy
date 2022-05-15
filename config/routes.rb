@@ -7,10 +7,16 @@ Rails.application.routes.draw do
         get 'admin', to: 'admin#index'
         get 'admin/writings'
         get 'admin/questions'
+        get 'admin/readings'
         get 'admin/comments'
+        get 'admin/prompts'
+        get 'admin/listenings'
         get 'admin/users'
-        get 'admin/show_writing'
+        get 'admin/show_writing/:id', to: 'admin#show_writing', as: 'admin_writing'
         get 'admin/show_question/:id', to: 'admin#show_question', as: 'admin_question'
+        get 'admin/show_reading/:id', to: 'admin#show_reading', as: 'admin_reading'
+        get 'admin/show_prompt/:id', to: 'admin#show_prompt', as: 'admin_prompt'
+        get 'admin/show_listening/:id', to: 'admin#show_listening', as: 'admin_listening'
     end
     
 

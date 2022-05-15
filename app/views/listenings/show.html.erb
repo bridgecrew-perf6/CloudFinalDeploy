@@ -3,14 +3,8 @@
     <%= render @listening %>
 
     <div>
-        <!-- Link to Edit Listening -->
-        <%= link_to "Edit this listening", edit_listening_path(@listening) %> |
-
         <!-- Link back to all Listenings -->
         <%= link_to "Back to listenings", listenings_path %>
-
-        <!-- Button to Destroy Listening -->
-        <%= button_to "Destroy this listening", @listening, method: :delete %>
     </div>
 </div>
 

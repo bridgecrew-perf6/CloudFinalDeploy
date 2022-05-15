@@ -34,6 +34,8 @@ class WritingsController < ApplicationController
         # Save current user
         @writing.user = current_user
 
+        @writing.prompt_id = 1
+
         respond_to do |format|
             if @writing.save
                 format.html { redirect_to writing_url(@writing), notice: "Writing was successfully created." }

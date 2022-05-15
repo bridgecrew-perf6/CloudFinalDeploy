@@ -5,14 +5,8 @@
     <%= render @question %>
 
     <div>
-        <!-- Link to Edit Question -->
-        <%= link_to "Edit this question", edit_question_path(@question) %> |
-        
         <!-- Link back to all Questions -->
         <%= link_to "Back to questions", questions_path %>
-
-        <!-- Button to Destroy Question -->
-        <%= button_to "Destroy this question", @question, method: :delete %>
     </div>
 </div>
 

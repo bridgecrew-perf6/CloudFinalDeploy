@@ -27,7 +27,15 @@
 </div>
 
 <!-- Answer -->
-<div>
+<div id="answer-div-<%= listening_option.id %>" class="d-none">
     <strong>Answer:</strong>
     <%= listening_option.answer %>
 </div>
+
+<%= link_to "Show Answer", nil, remote: true, class: "btn btn-danger", id: "toggle-button-#{listening_option.id}",
+   data: { 
+        controller: "listenings", 
+        action: "listenings#toggleAnswer",
+        listenings_toggle_param: "toggle-button-#{listening_option.id}",
+        listenings_answer_param: "answer-div-#{listening_option.id}",
+} %>

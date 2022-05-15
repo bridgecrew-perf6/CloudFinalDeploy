@@ -27,8 +27,16 @@
     </div>
 
     <!-- Answer -->
-    <div>
+    <div id="answer-div-<%= question.id %>" class="d-none">
         <strong>Answer:</strong>
         <%= question.answer %>
     </div>
 </div>
+
+<%= link_to "Show Answer", nil, remote: true, class: "btn btn-danger", id: "toggle-button-#{question.id}", 
+    data: { 
+        controller: "questions", 
+        action: "questions#toggleAnswer",
+        questions_toggle_param: "toggle-button-#{question.id}",
+        questions_answer_param: "answer-div-#{question.id}",
+} %>

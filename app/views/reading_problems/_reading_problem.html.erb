@@ -9,7 +9,15 @@
 </div>
 
 <!-- Question -->
-<div>
+<div id="answer-div-<%= reading_problem.id %>" class="d-none">
     <strong>Answer:</strong>
     <%= reading_problem.answer %>
 </div>
+
+<%= link_to "Show Answer", nil, remote: true, class: "btn btn-danger", id: "toggle-button-#{reading_problem.id}",
+   data: { 
+        controller: "readings", 
+        action: "readings#toggleAnswer",
+        readings_toggle_param: "toggle-button-#{reading_problem.id}",
+        readings_answer_param: "answer-div-#{reading_problem.id}",
+} %>

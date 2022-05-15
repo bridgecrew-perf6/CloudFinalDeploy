@@ -14,8 +14,10 @@ export default class extends Controller {
 
         // Get Answer Div Id
         const answerID = event.params["answer"];
+        console.log(answerID);
         // Get Toggle Button Id
         const toggleButtonID = event.params["toggle"];
+        console.log(toggleButtonID);
 
         // Grab Answer Div using Id
         const answer = document.getElementById(answerID);

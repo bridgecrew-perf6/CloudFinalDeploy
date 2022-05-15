@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
 
         @message = Message.new
         # Set all the messages for selected room
-        @messages = @single_room.messages.includes([:user]).order(created_at: :asc)
+        @messages = @single_room.messages.includes([:user, :attachments_attachments]).order(created_at: :asc)
 
         # Set all Users except current user
         @users = User.includes(avatar_attachment: [:blob]).all_except(current_user)

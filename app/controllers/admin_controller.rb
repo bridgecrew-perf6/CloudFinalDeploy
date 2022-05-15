@@ -18,6 +18,14 @@ class AdminController < ApplicationController
         @readings = Reading.all
     end
 
+    def prompts
+        @prompts = Prompt.all
+    end
+
+    def listenings
+        @listenings = Listening.all
+    end
+
     def comments
     end
 
@@ -36,5 +44,13 @@ class AdminController < ApplicationController
 
     def show_reading
         @reading = Reading.includes(:reading_problems).find(params[:id])
+    end
+
+    def show_prompt
+        @prompt = Prompt.find(params[:id])
+    end
+
+    def show_listening
+        @listening = Listening.includes(:listening_options).find(params[:id])
     end
 end

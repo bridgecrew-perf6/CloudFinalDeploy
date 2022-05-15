@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="text-center">Administrator</h1>
+    <%= render 'admin/nav_links' %>
+
+    <%= link_to "Add new Listening", new_listening_path %>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Level</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @listenings.each do |listening| %>
+                <tr>
+                    <th scope="row"><%= listening.id %></th>
+                    <td><%= link_to listening.title.truncate(15), admin_listening_path(listening) %></td>
+                    <td><%= listening.level %></td>
+                    <td><%= pluralize(listening.listening_options.size, "Option") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

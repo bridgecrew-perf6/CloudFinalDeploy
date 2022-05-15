@@ -1,0 +1,51 @@
+<div class="container">
+    <!-- Admin Links -->
+    <h1 class="text-center">Administrator</h1>
+    <%= render 'admin/nav_links' %>
+
+    <!-- Buttons for editing and deleting listening -->
+    <div class="text-center mt-5">
+        <div class="btn-group">
+            <%= link_to "Edit", edit_listening_path(@listening), class: "btn btn-warning" %>
+            <%= button_to "Delete", @listening, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </div>
+    <div>
+
+    <!-- Title -->
+    <h2><%= @listening.title %></h2>
+
+    <!-- Level -->
+    <h4>Level: <%= @listening.level %> </h4>
+    
+   <div>
+        <%= audio_tag(url_for(@listening.song_file), controls: '') %>
+    </div>
+
+    
+    <div class="row mt-1">
+        <!-- Number of Problems -->
+        <strong><%= pluralize(@listening.listening_options.count, "Option") %></strong>
+
+        <!-- Render each comment -->
+        <% @listening.listening_options.each do |listening_option| %>
+            <div class="row mt-1 text-center">
+                Q<%= listening_option.index %>
+                <%= listening_option.question %>:
+            </div>
+             <div>
+                <%= listening_option.a %>
+            </div>
+             <div>
+                <%= listening_option.b %>
+            </div>
+             <div>
+                <%= listening_option.c %>
+            </div>
+            <div>
+                 <%= listening_option.answer %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<%= render 'listening_options/form', listening: @listening %>

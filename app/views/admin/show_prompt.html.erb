@@ -1,0 +1,24 @@
+<div class="container">
+    <!-- Admin Links -->
+    <h1 class="text-center">Administrator</h1>
+    <%= render 'admin/nav_links' %>
+
+    <!-- Buttons for editing and deleting prompt -->
+    <div class="text-center mt-5">
+        <div class="btn-group">
+            <%= link_to "Edit", edit_prompt_path(@prompt), class: "btn btn-warning" %>
+            <%= button_to "Delete", @prompt, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </div>
+    <div>
+
+    <!-- Title -->
+    <h2><%= @prompt.topic %></h2>
+
+    <!-- Level -->
+    <h4>Level: <%= @prompt.level %> </h4>
+    
+    <!-- Reading Body -->
+    <div>
+        <%= @prompt.body %>
+    </div>  
+</div>

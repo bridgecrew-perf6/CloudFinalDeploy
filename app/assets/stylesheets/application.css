@@ -17,6 +17,12 @@
 
 body {
     overflow: auto;
+
+}
+
+ol {
+    padding-left: 0;
+    list-style-position: inside;
 }
 
 .msg-form {

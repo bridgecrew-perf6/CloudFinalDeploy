@@ -1,4 +1,26 @@
 <div class="container">
     <h1 class="text-center">Administrator</h1>
     <%= render 'admin/nav_links' %>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">User</th>
+                <th scope="col">Corrections</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @writings.each do |writing| %>
+                <tr>
+                    <th scope="row"><%= writing.id %></th>
+                    <td><%= link_to writing.title.truncate(15), admin_writing_path(writing) %></td>
+                    <td><%= writing.user.name %></td>
+                    <td><%= pluralize(writing.corrections.size, "Correction") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>

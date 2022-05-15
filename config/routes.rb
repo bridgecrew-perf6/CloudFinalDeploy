@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         get 'admin/questions'
         get 'admin/comments'
         get 'admin/users'
-        get 'admin/show_writing'
+        get 'admin/show_writing/:id', to: 'admin#show_writing', as: 'admin_writing'
         get 'admin/show_question/:id', to: 'admin#show_question', as: 'admin_question'
     end
     
